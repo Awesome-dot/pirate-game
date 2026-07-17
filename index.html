@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Legend of the Whispering Depths</title>
     <style>
-        /* นำเข้าฟอนต์สไตล์ผจญภัยย้อนยุค */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Sarabun:wght@300;500;700&display=swap');
 
         * {
@@ -17,7 +16,7 @@
         body {
             font-family: 'Sarabun', sans-serif;
             background-color: #120c06;
-            background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1599740831114-15793478020a?q=80&w=1920&auto=format&fit=crop'); /* ภาพพื้นหลังลายไม้โบราณ */
+            background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1599740831114-15793478020a?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -29,10 +28,9 @@
             padding: 20px;
         }
 
-        /* กล่องเนื้อหาหลักสไตล์ม้วนกระดาษโบราณ */
         .parchment-container {
             background: #f1e4c3;
-            background-image: url('https://www.transparenttextures.com/patterns/parchment.png'); /* ลายพื้นผิวกระดาษ */
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
             border: 12px double #5c401c;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 100px rgba(92, 64, 28, 0.4);
@@ -45,7 +43,6 @@
             transition: all 0.5s ease;
         }
 
-        /* ตกแต่งมุมกล่อง */
         .parchment-container::before {
             content: "☠";
             font-family: 'Cinzel', serif;
@@ -77,7 +74,6 @@
             margin-bottom: 20px;
         }
 
-        /* ปุ่มสไตล์ย้อนยุค */
         .pirate-btn {
             background-color: #7a1d1d;
             background-image: linear-gradient(135deg, #7a1d1d 0%, #4a1010 100%);
@@ -103,13 +99,11 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.6);
         }
 
-        /* ซ่อนเนื้อหาเพื่อแบ่งด่าน */
         .hidden {
             display: none !important;
         }
 
-        /* ส่วนจัดวางภาพสำรวจของด่านที่ 1 */
-        .search-room-container {
+        .graphic-container {
             margin: 30px 0;
             border: 4px solid #5c401c;
             border-radius: 4px;
@@ -118,13 +112,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .ship-room-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ข้อความแจ้งเตือนคำใบ้ */
         .clue-hint {
             background-color: #e6d3a8;
             border-left: 5px solid #7a1d1d;
@@ -134,7 +121,6 @@
             font-style: italic;
         }
 
-        /* ส่วนคำตอบ */
         .answer-zone {
             display: flex;
             flex-direction: column;
@@ -162,7 +148,6 @@
             box-shadow: 0 0 10px rgba(122, 29, 29, 0.5);
         }
 
-        /* เอฟเฟกต์แจ้งสถานะ */
         .feedback {
             font-weight: bold;
             font-size: 1.1rem;
@@ -170,6 +155,54 @@
         }
         .correct-text { color: #1e5a22; }
         .incorrect-text { color: #8a1717; }
+
+        /* สไตล์สำหรับปุ่มทิศทางเข็มทิศในด่าน 2 */
+        .compass-interface {
+            display: grid;
+            grid-template-columns: repeat(3, 70px);
+            grid-template-rows: repeat(3, 70px);
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .compass-btn {
+            background-color: #4a2f0f;
+            color: #ffd700;
+            border: 2px solid #b89352;
+            border-radius: 50%;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        .compass-btn:hover {
+            background-color: #b89352;
+            color: #2c1a04;
+            transform: scale(1.05);
+        }
+
+        .compass-btn:active {
+            transform: scale(0.95);
+        }
+
+        .current-sequence {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            letter-spacing: 5px;
+            color: #7a1d1d;
+            background: rgba(92, 64, 28, 0.1);
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 10px;
+            min-height: 45px;
+        }
     </style>
 </head>
 <body>
@@ -178,96 +211,68 @@
     <div id="intro-screen" class="parchment-container">
         <h1>The Whispering Depths</h1>
         <p style="font-family: 'Cinzel', serif; font-style: italic; color: #5c401c;">- บันทึกการเดินทางสู่น่านน้ำต้องสาป -</p>
-        
         <p>
             พวกเจ้า... กลุ่มโจรสลัดหน้าใหม่ที่กระหายในความร่ำรวย ได้มาพบกันในโรงเหล้าโทรม ๆ แห่งหนึ่งริมชายฝั่ง 
             ทันใดนั้น ชายชราตาเดียวผู้หนึ่งได้ยื่นม้วนกระดาษ parchment โบราณที่เต็มไปด้วยฝุ่นมาให้พวกเจ้า
         </p>
         <p><strong>"นี่คือแผนที่นำทางไปยังสมบัติของกัปตันบาร์โบซ่า... จงเปิดมันเมื่อพวกเจ้าพร้อมเผชิญหน้ากับความตาย!"</strong></p>
-        
-        <button class="pirate-btn" onclick="startAdventure()">กางแผนที่เริ่มเดินทาง!</button>
+        <button class="pirate-btn" onclick="switchScreen('intro-screen', 'stage-1-screen')">กางแผนที่เริ่มเดินทาง!</button>
     </div>
 
     <!-- ================= 2. ด่านที่ 1 (เกาะร้างแห่งสุสานเรือ) ================= -->
     <div id="stage-1-screen" class="parchment-container hidden">
         <h2>ด่านที่ 1: เกาะร้างแห่งสุสานเรือ</h2>
         <p>
-            พายุได้ซัดเรือของพวกเจ้ามาเกยตื้นที่เกาะร้างแห่งหนึ่ง รอบตัวมีแต่ซากเรือหักพัง 
-            ใบเรือของพวกเจ้าขาดสะบั้นหมดแล้ว! พวกเจ้าต้องเข้าไปในห้องกัปตันของซากเรือหลวงเพื่อหา <strong>"ใบเรือสำรอง"</strong> 
-            แต่กล่องเก็บใบเรือถูกล็อกด้วยแม่กุญแจเหล็กตัวใหญ่ที่มีสัญลักษณ์ปริศนาติดอยู่...
+            พายุได้ซัดเรือของพวกเจ้ามาเกยตื้นที่เกาะร้างแห่งหนึ่ง รอบตัวมีแต่ซากเรือหักพัง พวกเจ้าต้องเข้าไปในห้องกัปตันของซากเรือหลวงเพื่อหา <strong>"ใบเรือสำรอง"</strong> แต่กล่องเก็บใบเรือถูกล็อกด้วยแม่กุญแจเหล็กตัวใหญ่ที่มีสัญลักษณ์ปริศนาติดอยู่...
         </p>
 
-        <!-- ภาพปริศนาจำลอง (ใช้ SVG วาดเป็นรูปภาพห้องรก ๆ เพื่อให้โหลดเร็วและแสดงผลได้ทันที) -->
-        <div class="search-room-container">
+        <div class="graphic-container">
             <svg viewBox="0 0 800 450" style="background-color: #2b1f14; width: 100%; height: auto;">
-                <!-- พื้นหลังห้องไม้ -->
                 <rect width="800" height="450" fill="#2b1f14"/>
                 <path d="M 0 400 L 800 400" stroke="#1c140c" stroke-width="8"/>
                 <path d="M 150 0 L 150 450 M 650 0 L 650 450" stroke="#1c140c" stroke-width="4"/>
-                
-                <!-- โต๊ะเขียนแผนที่ -->
                 <rect x="250" y="280" width="300" height="120" fill="#4d3319" stroke="#1c140c" stroke-width="4"/>
                 <rect x="230" y="260" width="340" height="20" fill="#5c3f21" stroke="#1c140c" stroke-width="2"/>
-                
-                <!-- โคมไฟแขวน -->
                 <line x1="400" y1="0" x2="400" y2="100" stroke="#8c6239" stroke-width="3"/>
                 <path d="M 380 100 L 420 100 L 400 130 Z" fill="#ffd700" filter="drop-shadow(0px 0px 10px #ffae19)"/>
                 
-                <!-- สิ่งของในห้อง (ปริศนาที่ต้องสังเกตเพื่อตอบคำถาม!) -->
-                
-                <!-- 1. หัวกะโหลกโจรสลัด (เป้าหมาย 1) -->
+                <!-- หัวกะโหลก 3 ชิ้น -->
                 <g transform="translate(100, 280) scale(1.3)" opacity="0.9">
-                    <!-- หัวกะโหลกที่ 1 -->
                     <circle cx="20" cy="20" r="15" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
                     <rect x="13" y="28" width="14" height="10" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
-                    <circle cx="14" cy="18" r="3" fill="#000"/>
-                    <circle cx="26" cy="18" r="3" fill="#000"/>
+                    <circle cx="14" cy="18" r="3" fill="#000"/><circle cx="26" cy="18" r="3" fill="#000"/>
                 </g>
                 <g transform="translate(680, 150) scale(1.1)" opacity="0.9">
-                    <!-- หัวกะโหลกที่ 2 (ซ่อนอยู่บนชั้นวางขวา) -->
                     <circle cx="20" cy="20" r="15" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
                     <rect x="13" y="28" width="14" height="10" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
-                    <circle cx="14" cy="18" r="3" fill="#000"/>
-                    <circle cx="26" cy="18" r="3" fill="#000"/>
+                    <circle cx="14" cy="18" r="3" fill="#000"/><circle cx="26" cy="18" r="3" fill="#000"/>
                 </g>
                 <g transform="translate(480, 235) scale(0.9)" opacity="0.9">
-                    <!-- หัวกะโหลกที่ 3 บนโต๊ะ -->
                     <circle cx="20" cy="20" r="15" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
                     <rect x="13" y="28" width="14" height="10" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
-                    <circle cx="14" cy="18" r="3" fill="#000"/>
-                    <circle cx="26" cy="18" r="3" fill="#000"/>
+                    <circle cx="14" cy="18" r="3" fill="#000"/><circle cx="26" cy="18" r="3" fill="#000"/>
                 </g>
 
-                <!-- 2. ขวดเหล้ารัม (เป้าหมาย 2) -->
-                <!-- ขวดที่ 1 (ตั้งบนโต๊ะ) -->
+                <!-- ขวดเหล้ารัม 5 ใบ -->
                 <rect x="280" y="210" width="20" height="50" rx="3" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                 <rect x="285" y="195" width="10" height="15" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
-                <!-- ขวดที่ 2 (ล้มบนโต๊ะ) -->
                 <g transform="rotate(75, 340, 245)">
                     <rect x="340" y="245" width="20" height="50" rx="3" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                     <rect x="345" y="230" width="10" height="15" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                 </g>
-                <!-- ขวดที่ 3 (บนพื้นซ้าย) -->
                 <rect x="80" y="350" width="20" height="50" rx="3" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                 <rect x="85" y="335" width="10" height="15" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
-                <!-- ขวดที่ 4 (บนชั้นวางขวา) -->
                 <rect x="710" y="210" width="20" height="50" rx="3" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                 <rect x="715" y="195" width="10" height="15" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
-                <!-- ขวดที่ 5 (ล้มบนพื้นขวา) -->
                 <g transform="rotate(-90, 600, 390)">
                     <rect x="600" y="390" width="20" height="50" rx="3" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                     <rect x="605" y="375" width="10" height="15" fill="#1b4d3e" stroke="#000" stroke-width="2"/>
                 </g>
 
-                <!-- หน้าต่างเห็นจันทร์เสี้ยว -->
                 <circle cx="400" cy="180" r="40" fill="none" stroke="#5c3f21" stroke-width="6"/>
-                
-                <!-- กล่องสมบัติใบเรือสำรอง -->
                 <rect x="350" y="340" width="100" height="60" fill="#3a220c" stroke="#221204" stroke-width="3"/>
                 <rect x="345" y="335" width="110" height="15" fill="#523214" stroke="#221204" stroke-width="2"/>
                 <circle cx="400" cy="358" r="8" fill="#ffd700"/>
-                
-                <!-- ตัวอักษรกระตุ้นจินตนาการบนบอร์ดในเรือ -->
                 <text x="300" y="150" fill="#8c6a2f" font-family="'Cinzel', serif" font-size="12">"BARBOSA'S CABIN"</text>
             </svg>
         </div>
@@ -277,8 +282,6 @@
             "รหัสปลดล็อกใบเรือโบราณ คือผลลัพธ์ของ <strong>( จำนวนหัวกะโหลก 💀 คูณด้วย จำนวนขวดเหล้ารัม 🍾 ) แล้วตามด้วยเลข 7 ลงท้าย</strong>"
         </div>
 
-        <p style="font-size: 0.95rem; color: #5c401c;">(ลองช่วยเพื่อน ๆ สังเกตและนับสิ่งของที่ซ่อนอยู่ในห้องกัปตันดูนะ!)</p>
-
         <div class="answer-zone">
             <input type="text" id="stage1-answer" class="pirate-input" placeholder="ใส่รหัสปลดล็อกที่นี่...">
             <button class="pirate-btn" onclick="checkStage1()">ส่งรหัสไขแม่กุญแจ</button>
@@ -286,24 +289,93 @@
         </div>
     </div>
 
-    <!-- ================= 3. หน้าชนะด่านที่ 1 (เตรียมเข้าด่านถัดไป) ================= -->
+    <!-- ================= 3. ด่านที่ 2 (ผืนน้ำแห่งเสียงเพลงไซเรน) ================= -->
+    <div id="stage-2-screen" class="parchment-container hidden">
+        <h2>ด่านที่ 2: ผืนน้ำแห่งเสียงเพลงไซเรน</h2>
+        <p>
+            พวกเจ้ารอดจากเกาะแรกมาได้ แต่ขณะนี้เรือกำลังแล่นเข้าสู่ม่านหมอกหนาทึบ... ทันใดนั้น เสียงเพลงอันไพเราะแต่ชวนขนลุกของ **ไซเรน (พรายทะเล)** ก็ดังขึ้น! ลูกเรือเริ่มเบลอและควบคุมพวงมาลัยไม่อยู่! 
+        </p>
+        <p>มีเพียงเศษกระดาษแผ่นสุดท้ายของกัปตันบาร์โบซ่าที่เขียนคำเตือนบอกเส้นทางหลบหลีกเอาไว้...</p>
+
+        <!-- ภาพกราฟิกเข็มทิศโบราณท่ามกลางหมอก -->
+        <div class="graphic-container">
+            <svg viewBox="0 0 800 300" style="background-color: #3d4a4d; width: 100%; height: auto;">
+                <defs>
+                    <linearGradient id="fog" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#4d5f61" stop-opacity="0.9"/>
+                        <stop offset="50%" stop-color="#738a8c" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#3d4a4d" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+                <rect width="800" height="300" fill="url(#fog)"/>
+                
+                <!-- วาดวงล้อเข็มทิศพวงมาลัยเรือ -->
+                <circle cx="400" cy="150" r="90" fill="#5c3f21" stroke="#b89352" stroke-width="6"/>
+                <circle cx="400" cy="150" r="70" fill="#1f150c" stroke="#b89352" stroke-width="2"/>
+                
+                <!-- เส้นทิศ -->
+                <line x1="400" y1="50" x2="400" y2="250" stroke="#b89352" stroke-width="3" stroke-dasharray="4"/>
+                <line x1="300" y1="150" x2="500" y2="150" stroke="#b89352" stroke-width="3" stroke-dasharray="4"/>
+                
+                <!-- ตัวอักษรทิศบนเข็มทิศ -->
+                <text x="393" y="73" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">N</text>
+                <text x="394" y="240" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">S</text>
+                <text x="480" y="157" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">E</text>
+                <text x="305" y="157" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">W</text>
+                
+                <!-- ข้อความดนตรีของไซเรน -->
+                <text x="80" y="120" fill="#a3b8bc" font-size="16" transform="rotate(-5, 80, 120)" font-style="italic">🎶 ลา~ ล้า~ หลงทิศเถิดโจรสลัด...</text>
+                <text x="560" y="190" fill="#a3b8bc" font-size="16" transform="rotate(5, 560, 190)" font-style="italic">🎵 ตามเสียงพวกเรามาสิ...</text>
+            </svg>
+        </div>
+
+        <div class="clue-hint">
+            <strong>📜 บันทึกคำเตือนกัปตันบาร์โบซ่า:</strong><br>
+            "จงหันหน้าไปทางทิศที่ตะวันลับขอบฟ้า เดินหน้าสามก้าว แล้วเลี้ยวไปยังทิศที่หนาวเหน็บ... หากบิดพวงมาลัยเรือผิดแม้แต่ครั้งเดียว เจ้าจะกลายเป็นเหยื่อใต้ท้องทะเล!"
+        </div>
+
+        <p style="font-size: 0.95rem; color: #5c401c;">(กดปุ่มทิศทางเข็มทิศตามลำดับคำใบ้ให้ถูกต้องเพื่อนำเรือฝ่าม่านหมอก)</p>
+
+        <!-- อินเตอร์เฟสกดเข็มทิศ -->
+        <div class="compass-interface">
+            <td></td>
+            <button class="compass-btn" onclick="pressCompass('N')">N</button>
+            <td></td>
+            <button class="compass-btn" onclick="pressCompass('W')">W</button>
+            <div style="display:flex; justify-content:center; align-items:center; color:#5c401c; font-size:24px;">🧭</div>
+            <button class="compass-btn" onclick="pressCompass('E')">E</button>
+            <td></td>
+            <button class="compass-btn" onclick="pressCompass('S')">S</button>
+            <td></td>
+        </div>
+
+        <p>เส้นทางการเดินเรือปัจจุบัน:</p>
+        <div id="compass-seq-display" class="current-sequence">- ว่างเปล่า -</div>
+
+        <div class="answer-zone" style="margin-top: 15px;">
+            <button class="pirate-btn" style="background-color: #4a4a4a; background-image: none;" onclick="resetCompass()">ตั้งเข็มทิศใหม่ (Reset)</button>
+            <div id="stage2-feedback" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- ================= 4. หน้าจบเกม / ชนะทั้งหมด (ครึ่งทาง) ================= -->
     <div id="victory-screen" class="parchment-container hidden">
-        <h1 style="color: #1e5a22;">สำเร็จแล้ว!</h1>
-        <p><strong>แกร๊ก...!</strong> เสียงแม่กุญแจโบราณดีดออกเผยให้เห็นใบเรือผืนใหม่เอี่ยมที่ซ่อนอยู่ภายในกล่อง!</p>
-        <p>พวกเจ้ารีบนำมันไปเปลี่ยนที่เสากระโดงเรือและแล่นเรือออกจากสุสานเรือนี้ได้สำเร็จ ท้องทะเลกว้างใหญ่และอุปสรรคถัดไปกำลังรอพวกเจ้าอยู่...</p>
+        <h1 style="color: #1e5a22;">การเดินทางยังคงดำเนินต่อไป!</h1>
+        <p><strong>ซ่าซ่า...!</strong> เสียงคลื่นแหวกออกจากกัน ท้องฟ้ากลับมาเปิดกว้างและเสียงเพลงไซเรนได้เงียบหายไปแล้ว!</p>
+        <p>พวกเจ้าสามารถบังคับเรือฝ่าม่านหมอกมรณะมาได้อย่างปาฏิหาริย์! ตอนนี้ข้างหน้าของพวกเจ้าคือผืนป่าดงดิบขนาดใหญ่ ซึ่งมีศิลาจารึกโบราณสีดำตั้งตระหง่านอยู่...</p>
         <br>
-        <p style="font-style: italic;">(ด่านที่ 2 "ผืนน้ำแห่งเสียงเพลงไซเรน" กำลังจะเผยขึ้นมาเร็ว ๆ นี้ตามที่เพื่อนตกลงไว้กับซันนี่!)</p>
+        <p><strong>🎉 เยี่ยมมากสหาย! เจ้าผ่านไปได้ 2 ด่านแล้ว!</strong></p>
+        <p style="font-style: italic; color: #5c401c;">(ด่านที่ 3 "เกาะป่าดงดิบแห่งอักขระโบราณ Poneglyph" กำลังรอเจ้าอยู่ในบันทึกการเดินทางเล่มถัดไป!)</p>
     </div>
 
     <script>
-        // ฟังก์ชันเริ่มเดินทางสลับหน้าจอ
-        function startAdventure() {
-            document.getElementById('intro-screen').classList.add('hidden');
-            document.getElementById('stage-1-screen').classList.remove('hidden');
+        // ระบบสลับหน้าจอ
+        function switchScreen(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
         }
 
-        // ฟังก์ชันตรวจคำตอบ ด่านที่ 1
-        // เฉลย: หัวกะโหลก 3 ชิ้น * ขวดเหล้ารัม 5 ใบ = 15 ลงท้ายด้วยเลข 7 คือ "157"
+        // --- ระบบด่านที่ 1 ---
         function checkStage1() {
             const answerInput = document.getElementById('stage1-answer').value.trim();
             const feedback = document.getElementById('stage1-feedback');
@@ -311,14 +383,52 @@
             if (answerInput === '157') {
                 feedback.innerHTML = "<span class='correct-text'>✔ รหัสถูกต้อง! แม่กุญแจปลดล็อกแล้ว!</span>";
                 setTimeout(() => {
-                    document.getElementById('stage-1-screen').classList.add('hidden');
-                    document.getElementById('victory-screen').classList.remove('hidden');
+                    switchScreen('stage-1-screen', 'stage-2-screen');
                 }, 1500);
             } else if (answerInput === '') {
                 feedback.innerHTML = "<span class='incorrect-text'>กรุณากรอกรหัสก่อนสิสหาย!</span>";
             } else {
-                feedback.innerHTML = "<span class='incorrect-text'>❌ รหัสไม่ถูกต้อง! ลองนับจำนวนหัวกะโหลกและขวดใหม่อีกครั้งนะ</span>";
+                feedback.innerHTML = "<span class='incorrect-text'>❌ รหัสไม่ถูกต้อง! ลองนับใหม่ดี ๆ นะ</span>";
             }
+        }
+
+        // --- ระบบด่านที่ 2 ---
+        let userAnswers = [];
+        const correctSequence = ['W', 'W', 'W', 'N']; // ทิศตะวันตก 3 ครั้ง และ ทิศเหนือ 1 ครั้ง
+
+        function pressCompass(direction) {
+            userAnswers.push(direction);
+            
+            // อัปเดตการแสดงผลทิศทางที่กด
+            const display = document.getElementById('compass-seq-display');
+            display.innerText = userAnswers.join(' ➔ ');
+
+            const feedback = document.getElementById('stage2-feedback');
+            
+            // ตรวจสอบความถูกต้องแบบ Real-time
+            // ตรวจว่าตัวที่เพิ่งกดเข้ามา ถูกต้องตามตำแหน่งในคำตอบไหม
+            const currentIndex = userAnswers.length - 1;
+            if (userAnswers[currentIndex] !== correctSequence[currentIndex]) {
+                feedback.innerHTML = "<span class='incorrect-text'>❌ เรือชนหินโสโครกเพราะหลงทิศ! เพลงไซเรนครอบงำแล้ว! (ระบบรีเซ็ตใหม่)</span>";
+                setTimeout(() => {
+                    resetCompass();
+                }, 1200);
+                return;
+            }
+
+            // ถ้ากดถูกจนครบกำหนด
+            if (userAnswers.length === correctSequence.length) {
+                feedback.innerHTML = "<span class='correct-text'>✔ เรือหันถูกทิศ! หลุดพ้นจากม่านหมอกแล้ว!</span>";
+                setTimeout(() => {
+                    switchScreen('stage-2-screen', 'victory-screen');
+                }, 1500);
+            }
+        }
+
+        function resetCompass() {
+            userAnswers = [];
+            document.getElementById('compass-seq-display').innerText = '- ว่างเปล่า -';
+            document.getElementById('stage2-feedback').innerHTML = '';
         }
     </script>
 </body>
