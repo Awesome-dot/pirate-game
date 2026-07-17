@@ -135,7 +135,7 @@
             border-radius: 4px;
             padding: 10px 15px;
             font-size: 1.2rem;
-            width: 250px;
+            width: 320px;
             text-align: center;
             font-family: 'Cinzel', serif;
             letter-spacing: 2px;
@@ -188,10 +188,6 @@
             transform: scale(1.05);
         }
 
-        .compass-btn:active {
-            transform: scale(0.95);
-        }
-
         .current-sequence {
             font-family: 'Cinzel', serif;
             font-size: 1.3rem;
@@ -202,6 +198,25 @@
             border-radius: 4px;
             margin-top: 10px;
             min-height: 45px;
+        }
+
+        /* สไตล์ตารางถอดรหัสด่าน 3 */
+        .cipher-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: #fcfaf2;
+            font-family: 'Cinzel', serif;
+        }
+        .cipher-table th, .cipher-table td {
+            border: 1px solid #5c401c;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .cipher-table th {
+            background-color: #4a2f0f;
+            color: #ffd700;
         }
     </style>
 </head>
@@ -236,7 +251,7 @@
                 <line x1="400" y1="0" x2="400" y2="100" stroke="#8c6239" stroke-width="3"/>
                 <path d="M 380 100 L 420 100 L 400 130 Z" fill="#ffd700" filter="drop-shadow(0px 0px 10px #ffae19)"/>
                 
-                <!-- หัวกะโหลก 3 ชิ้น -->
+                <!-- สิ่งของปริศนา (หัวกะโหลก 3 ชิ้น) -->
                 <g transform="translate(100, 280) scale(1.3)" opacity="0.9">
                     <circle cx="20" cy="20" r="15" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
                     <rect x="13" y="28" width="14" height="10" fill="#fcfaf2" stroke="#2c1a04" stroke-width="2"/>
@@ -293,11 +308,9 @@
     <div id="stage-2-screen" class="parchment-container hidden">
         <h2>ด่านที่ 2: ผืนน้ำแห่งเสียงเพลงไซเรน</h2>
         <p>
-            พวกเจ้ารอดจากเกาะแรกมาได้ แต่ขณะนี้เรือกำลังแล่นเข้าสู่ม่านหมอกหนาทึบ... ทันใดนั้น เสียงเพลงอันไพเราะแต่ชวนขนลุกของ **ไซเรน (พรายทะเล)** ก็ดังขึ้น! ลูกเรือเริ่มเบลอและควบคุมพวงมาลัยไม่อยู่! 
+            พวกเจ้ารอดจากเกาะแรกมาได้ แต่ขณะนี้เรือกำลังแล่นเข้าสู่ม่านหมอกหนาทึบ... ทันใดนั้น เสียงเพลงอันไพเราะของไซเรนก็ดังขึ้น! มีเพียงเศษกระดาษแผ่นสุดท้ายของกัปตันบาร์โบซ่าที่เขียนบอกทิศทางเอาไว้...
         </p>
-        <p>มีเพียงเศษกระดาษแผ่นสุดท้ายของกัปตันบาร์โบซ่าที่เขียนคำเตือนบอกเส้นทางหลบหลีกเอาไว้...</p>
 
-        <!-- ภาพกราฟิกเข็มทิศโบราณท่ามกลางหมอก -->
         <div class="graphic-container">
             <svg viewBox="0 0 800 300" style="background-color: #3d4a4d; width: 100%; height: auto;">
                 <defs>
@@ -308,48 +321,32 @@
                     </linearGradient>
                 </defs>
                 <rect width="800" height="300" fill="url(#fog)"/>
-                
-                <!-- วาดวงล้อเข็มทิศพวงมาลัยเรือ -->
                 <circle cx="400" cy="150" r="90" fill="#5c3f21" stroke="#b89352" stroke-width="6"/>
                 <circle cx="400" cy="150" r="70" fill="#1f150c" stroke="#b89352" stroke-width="2"/>
-                
-                <!-- เส้นทิศ -->
                 <line x1="400" y1="50" x2="400" y2="250" stroke="#b89352" stroke-width="3" stroke-dasharray="4"/>
                 <line x1="300" y1="150" x2="500" y2="150" stroke="#b89352" stroke-width="3" stroke-dasharray="4"/>
-                
-                <!-- ตัวอักษรทิศบนเข็มทิศ -->
                 <text x="393" y="73" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">N</text>
                 <text x="394" y="240" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">S</text>
                 <text x="480" y="157" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">E</text>
                 <text x="305" y="157" fill="#ffd700" font-family="'Cinzel', serif" font-weight="bold" font-size="20">W</text>
-                
-                <!-- ข้อความดนตรีของไซเรน -->
                 <text x="80" y="120" fill="#a3b8bc" font-size="16" transform="rotate(-5, 80, 120)" font-style="italic">🎶 ลา~ ล้า~ หลงทิศเถิดโจรสลัด...</text>
-                <text x="560" y="190" fill="#a3b8bc" font-size="16" transform="rotate(5, 560, 190)" font-style="italic">🎵 ตามเสียงพวกเรามาสิ...</text>
             </svg>
         </div>
 
         <div class="clue-hint">
             <strong>📜 บันทึกคำเตือนกัปตันบาร์โบซ่า:</strong><br>
-            "จงหันหน้าไปทางทิศที่ตะวันลับขอบฟ้า เดินหน้าสามก้าว แล้วเลี้ยวไปยังทิศที่หนาวเหน็บ... หากบิดพวงมาลัยเรือผิดแม้แต่ครั้งเดียว เจ้าจะกลายเป็นเหยื่อใต้ท้องทะเล!"
+            "จงหันหน้าไปทางทิศที่ตะวันลับขอบฟ้า เดินหน้าสามก้าว แล้วเลี้ยวไปยังทิศที่หนาวเหน็บ..."
         </div>
 
-        <p style="font-size: 0.95rem; color: #5c401c;">(กดปุ่มทิศทางเข็มทิศตามลำดับคำใบ้ให้ถูกต้องเพื่อนำเรือฝ่าม่านหมอก)</p>
-
-        <!-- อินเตอร์เฟสกดเข็มทิศ -->
         <div class="compass-interface">
-            <td></td>
-            <button class="compass-btn" onclick="pressCompass('N')">N</button>
-            <td></td>
+            <td></td><button class="compass-btn" onclick="pressCompass('N')">N</button><td></td>
             <button class="compass-btn" onclick="pressCompass('W')">W</button>
             <div style="display:flex; justify-content:center; align-items:center; color:#5c401c; font-size:24px;">🧭</div>
             <button class="compass-btn" onclick="pressCompass('E')">E</button>
-            <td></td>
-            <button class="compass-btn" onclick="pressCompass('S')">S</button>
-            <td></td>
+            <td></td><button class="compass-btn" onclick="pressCompass('S')">S</button><td></td>
         </div>
 
-        <p>เส้นทางการเดินเรือปัจจุบัน:</p>
+        <p>Log เส้นทางการเดินเรือปัจจุบัน:</p>
         <div id="compass-seq-display" class="current-sequence">- ว่างเปล่า -</div>
 
         <div class="answer-zone" style="margin-top: 15px;">
@@ -358,18 +355,122 @@
         </div>
     </div>
 
-    <!-- ================= 4. หน้าจบเกม / ชนะทั้งหมด (ครึ่งทาง) ================= -->
+    <!-- ================= 4. ด่านที่ 3 (เกาะป่าดงดิบแห่งอักขระโบราณ) ================= -->
+    <div id="stage-3-screen" class="parchment-container hidden">
+        <h2>ด่านที่ 3: เกาะป่าดงดิบแห่งอักขระโบราณ</h2>
+        <p>
+            เรือแล่นมาจอดเทียบท่าที่ผืนป่าดงดิบหนาทึบ ใจกลางป่ามี **ศิลาจารึกโบราณสีดำ (Poneglyph)** ขนาดมหึมาตั้งตระหง่านอยู่ 
+            บนศิลาถูกสลักไว้ด้วยสัญลักษณ์แปลกตา 8 ตัวอักษร พวกเจ้าต้องใช้ตารางถอดรหัสโจรสลัดในบันทึกเพื่อแปลคำนี้ออกมาให้ถูกต้อง!
+        </p>
+
+        <!-- กราฟิกศิลาโบราณสลักอักขระลับ (เวอร์ชันแก้ไขลายเส้นชัดเจน 100%) -->
+        <div class="graphic-container">
+            <svg viewBox="0 0 800 240" style="background-color: #172217; width: 100%; height: auto;">
+                <!-- แท่งศิลา Poneglyph สีดำ -->
+                <rect x="150" y="20" width="500" height="200" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="4"/>
+                <rect x="170" y="35" width="460" height="170" fill="none" stroke="#b89352" stroke-width="1" stroke-dasharray="4"/>
+                
+                <!-- อักขระโบราณ 8 ตัวเรียงกัน (คำแปลรวมคือ TREASURE) -->
+                <g stroke="#ffd700" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                    <!-- ตัวที่ 1: T (⚓ สมอเรือ) -->
+                    <g transform="translate(195, 75)">
+                        <line x1="25" y1="5" x2="25" y2="55" />
+                        <line x1="10" y1="15" x2="40" y2="15" />
+                        <path d="M 5,35 A 20,20 0 0,0 45,35" />
+                        <path d="M 2,30 L 5,35 L 10,33 M 48,30 L 45,35 L 40,33" />
+                    </g>
+                    
+                    <!-- ตัวที่ 2: R (🏹 คันธนู) -->
+                    <g transform="translate(255, 75)">
+                        <path d="M 10,5 A 25,25 0 0,1 10,55" />
+                        <line x1="5" y1="30" x2="45" y2="30" />
+                        <path d="M 35,23 L 45,30 L 35,37" />
+                    </g>
+                    
+                    <!-- ตัวที่ 3: E (👁 ดวงตา) -->
+                    <g transform="translate(315, 75)">
+                        <path d="M 5,30 Q 25,5 45,30 Q 25,55 5,30 Z" />
+                        <circle cx="25" cy="30" r="7" fill="#ffd700" />
+                    </g>
+                    
+                    <!-- ตัวที่ 4: A (🔺 สามเหลี่ยมจารึก) -->
+                    <g transform="translate(375, 75)">
+                        <polygon points="25,5 5,55 45,55" />
+                        <line x1="12" y1="38" x2="38" y2="38" />
+                    </g>
+                    
+                    <!-- ตัวที่ 5: S (⚡ สายฟ้าหยักคม) -->
+                    <g transform="translate(435, 75)">
+                        <path d="M 35,5 L 10,27 L 40,27 L 15,55" />
+                    </g>
+                    
+                    <!-- ตัวที่ 6: U (🥛 แก้วศักดิ์สิทธิ์) -->
+                    <g transform="translate(495, 75)">
+                        <path d="M 10,5 L 10,35 A 15,15 0 0,0 40,35 L 40,5" />
+                        <line x1="5" y1="53" x2="45" y2="53" />
+                        <line x1="25" y1="45" x2="25" y2="53" />
+                    </g>
+                    
+                    <!-- ตัวที่ 7: R (🏹 คันธนู เหมือนตัวที่ 2) -->
+                    <g transform="translate(555, 75)">
+                        <path d="M 10,5 A 25,25 0 0,1 10,55" />
+                        <line x1="5" y1="30" x2="45" y2="30" />
+                        <path d="M 35,23 L 45,30 L 35,37" />
+                    </g>
+                    
+                    <!-- ตัวที่ 8: E (👁 ดวงตา เหมือนตัวที่ 3) -->
+                    <g transform="translate(615, 75)">
+                        <path d="M 5,30 Q 25,5 45,30 Q 25,55 5,30 Z" />
+                        <circle cx="25" cy="30" r="7" fill="#ffd700" />
+                    </g>
+                </g>
+                <text x="165" y="210" fill="#4d5561" font-size="11">PONEGLYPH ANCIENT CHARACTERS</text>
+            </svg>
+        </div>
+
+        <!-- ตารางช่วยถอดรหัสภาษาโบราณ -->
+        <p><strong>📜 ตารางเทียบอักขระโบราณของกัปตันบาร์โบซ่า:</strong></p>
+        <table class="cipher-table">
+            <tr>
+                <th>อักขระโบราณ</th>
+                <td style="font-size:1.3rem;">⚓</td>
+                <td style="font-size:1.3rem;">🏹</td>
+                <td style="font-size:1.3rem;">👁</td>
+                <td style="font-size:1.3rem;">🔺</td>
+                <td style="font-size:1.3rem;">⚡</td>
+                <td style="font-size:1.3rem;">🥛</td>
+            </tr>
+            <tr>
+                <th>ความหมายอังกฤษ</th>
+                <td><strong>T</strong></td>
+                <td><strong>R</strong></td>
+                <td><strong>E</strong></td>
+                <td><strong>A</strong></td>
+                <td><strong>S</strong></td>
+                <td><strong>U</strong></td>
+            </tr>
+        </table>
+
+        <p style="font-size: 0.95rem; color: #5c401c;">(แปลสัญลักษณ์ทั้ง 8 ตัวเรียงจากซ้ายไปขวา แล้วพิมพ์คำตอบภาษาอังกฤษลงในช่องด้านล่าง)</p>
+
+        <div class="answer-zone">
+            <input type="text" id="stage3-answer" class="pirate-input" placeholder="พิมพ์คำแปลภาษาอังกฤษที่นี่..." style="text-transform: uppercase;">
+            <button class="pirate-btn" onclick="checkStage3()">ส่งคำแปลศิลาโบราณ</button>
+            <div id="stage3-feedback" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- ================= 5. หน้าจบเกม / ชนะทั้งหมด ================= -->
     <div id="victory-screen" class="parchment-container hidden">
-        <h1 style="color: #1e5a22;">การเดินทางยังคงดำเนินต่อไป!</h1>
-        <p><strong>ซ่าซ่า...!</strong> เสียงคลื่นแหวกออกจากกัน ท้องฟ้ากลับมาเปิดกว้างและเสียงเพลงไซเรนได้เงียบหายไปแล้ว!</p>
-        <p>พวกเจ้าสามารถบังคับเรือฝ่าม่านหมอกมรณะมาได้อย่างปาฏิหาริย์! ตอนนี้ข้างหน้าของพวกเจ้าคือผืนป่าดงดิบขนาดใหญ่ ซึ่งมีศิลาจารึกโบราณสีดำตั้งตระหง่านอยู่...</p>
+        <h1 style="color: #1e5a22;">ศิลาเปิดออกแล้ว!</h1>
+        <p><strong>ครืนนนนน...!</strong> แผ่นหิน Poneglyph ขยับเลื่อนออก เผยให้เห็นลายแทงเรืองแสงสีทองอร่ามชี้ขึ้นไปบนท้องฟ้า!</p>
+        <p>มันคือพิกัดสุดท้ายของ **"ถ้ำแห่งดวงตาแห่งลีเวียธาน"** ที่ซึ่งซ่อนหีบสมบัติในตำนานเอาไว้! พวกเจ้ารีบโห่ร้องและวิ่งกลับไปที่เรือเพื่อเตรียมตัวปิดฉากการล่าขุมทรัพย์ครั้งนี้!</p>
         <br>
-        <p><strong>🎉 เยี่ยมมากสหาย! เจ้าผ่านไปได้ 2 ด่านแล้ว!</strong></p>
-        <p style="font-style: italic; color: #5c401c;">(ด่านที่ 3 "เกาะป่าดงดิบแห่งอักขระโบราณ Poneglyph" กำลังรอเจ้าอยู่ในบันทึกการเดินทางเล่มถัดไป!)</p>
+        <p><strong>🎉 สุดยอดมากกัปตันและผองเพื่อน! ผ่านมาได้ถึง 3 เกาะแล้ว!</strong></p>
+        <p style="font-style: italic; color: #5c401c;">(ด่านที่ 4 "ถ้ำแห่งดวงตาแห่งลีเวียธาน" มินิเกมยิงแสงสะท้อนกระจกเงา ด่านสุดท้ายของพวกเรากำลังจะมาถึงเร็ว ๆ นี้!)</p>
     </div>
 
     <script>
-        // ระบบสลับหน้าจอ
         function switchScreen(hideId, showId) {
             document.getElementById(hideId).classList.add('hidden');
             document.getElementById(showId).classList.remove('hidden');
@@ -379,14 +480,9 @@
         function checkStage1() {
             const answerInput = document.getElementById('stage1-answer').value.trim();
             const feedback = document.getElementById('stage1-feedback');
-
             if (answerInput === '157') {
                 feedback.innerHTML = "<span class='correct-text'>✔ รหัสถูกต้อง! แม่กุญแจปลดล็อกแล้ว!</span>";
-                setTimeout(() => {
-                    switchScreen('stage-1-screen', 'stage-2-screen');
-                }, 1500);
-            } else if (answerInput === '') {
-                feedback.innerHTML = "<span class='incorrect-text'>กรุณากรอกรหัสก่อนสิสหาย!</span>";
+                setTimeout(() => { switchScreen('stage-1-screen', 'stage-2-screen'); }, 1500);
             } else {
                 feedback.innerHTML = "<span class='incorrect-text'>❌ รหัสไม่ถูกต้อง! ลองนับใหม่ดี ๆ นะ</span>";
             }
@@ -394,41 +490,44 @@
 
         // --- ระบบด่านที่ 2 ---
         let userAnswers = [];
-        const correctSequence = ['W', 'W', 'W', 'N']; // ทิศตะวันตก 3 ครั้ง และ ทิศเหนือ 1 ครั้ง
-
+        const correctSequence = ['W', 'W', 'W', 'N'];
         function pressCompass(direction) {
             userAnswers.push(direction);
-            
-            // อัปเดตการแสดงผลทิศทางที่กด
-            const display = document.getElementById('compass-seq-display');
-            display.innerText = userAnswers.join(' ➔ ');
-
+            document.getElementById('compass-seq-display').innerText = userAnswers.join(' ➔ ');
             const feedback = document.getElementById('stage2-feedback');
-            
-            // ตรวจสอบความถูกต้องแบบ Real-time
-            // ตรวจว่าตัวที่เพิ่งกดเข้ามา ถูกต้องตามตำแหน่งในคำตอบไหม
             const currentIndex = userAnswers.length - 1;
+            
             if (userAnswers[currentIndex] !== correctSequence[currentIndex]) {
-                feedback.innerHTML = "<span class='incorrect-text'>❌ เรือชนหินโสโครกเพราะหลงทิศ! เพลงไซเรนครอบงำแล้ว! (ระบบรีเซ็ตใหม่)</span>";
-                setTimeout(() => {
-                    resetCompass();
-                }, 1200);
+                feedback.innerHTML = "<span class='incorrect-text'>❌ เรือหลงทิศในม่านหมอก! (ระบบรีเซ็ตใหม่)</span>";
+                setTimeout(() => { resetCompass(); }, 1200);
                 return;
             }
-
-            // ถ้ากดถูกจนครบกำหนด
             if (userAnswers.length === correctSequence.length) {
                 feedback.innerHTML = "<span class='correct-text'>✔ เรือหันถูกทิศ! หลุดพ้นจากม่านหมอกแล้ว!</span>";
-                setTimeout(() => {
-                    switchScreen('stage-2-screen', 'victory-screen');
-                }, 1500);
+                setTimeout(() => { switchScreen('stage-2-screen', 'stage-3-screen'); }, 1500);
             }
         }
-
         function resetCompass() {
             userAnswers = [];
             document.getElementById('compass-seq-display').innerText = '- ว่างเปล่า -';
             document.getElementById('stage2-feedback').innerHTML = '';
+        }
+
+        // --- ระบบด่านที่ 3 ---
+        function checkStage3() {
+            const answerInput = document.getElementById('stage3-answer').value.trim().toUpperCase();
+            const feedback = document.getElementById('stage3-feedback');
+
+            if (answerInput === 'TREASURE') {
+                feedback.innerHTML = "<span class='correct-text'>✔ คำแปลถูกต้อง! กลไกศิลาโบราณทำงานแล้ว!</span>";
+                setTimeout(() => {
+                    switchScreen('stage-3-screen', 'victory-screen');
+                }, 1500);
+            } else if (answerInput === '') {
+                feedback.innerHTML = "<span class='incorrect-text'>พิมพ์คำแปลภาษาอังกฤษลงมาก่อนสิสหาย!</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect-text'>❌ อักขระโบราณยังไม่ตอบรับ คำแปลนี้ยังไม่ถูกต้อง!</span>";
+            }
         }
     </script>
 </body>
